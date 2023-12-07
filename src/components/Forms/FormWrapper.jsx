@@ -1,24 +1,48 @@
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import FormInput from "./FormInput";
 import FormSelect from "./FormSelect";
 import { formTemplatesData } from "../../constants";
 import { useParams } from "react-router-dom";
 import FormTextarea from "./FormTextarea";
+import { useDispatch, useSelector } from "react-redux";
+import { updateFiles, updateForm } from "../../store/slices/formSlice";
 
 
-const tagObj = {
+const getFormTags = {
     input: (props) => <FormInput {...props} />,
     select: (props) => <FormSelect {...props} />,
     textarea: (props) => <FormTextarea {...props} />
 }
 
 const FormWrapper = () => {
-    const [formsData, setFormsData] = useState();
-    const [errorsData, setErrorsData] = useState();
     const { template } = useParams();
+
+    const { formsData, errorsData } = useSelector(state => state.form);
+
+    const dispatch = useDispatch();
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+    }
+
+    const handleBlur = (e) => {
+        const { name, type, value, files, required } = e.target;
+        dispatch(updateForm({ name, type, value, files, required, template }));
+    }
+
+    const handleChange = (e) => {
+        const { type, name, files, required, dataset, value } = e.target;
+        if (type === 'file') {
+            dispatch(updateFiles({ name, required, files, sizeLimit: parseInt(dataset?.sizeLimit), template }));
+        } else {
+            dispatch(updateForm({ name, type, value, required, template }));
+        }
+    }
+
+    const handleClear = ({ name, type, value, files, required }) => {
+        dispatch(updateForm({ name, type, value, files, required, template }));
     }
 
     return (
@@ -28,7 +52,7 @@ const FormWrapper = () => {
                     template && (
                         formTemplatesData?.[template]?.map(data => (
                             <Fragment key={data?.id}>
-                                {tagObj[data?.tag](data)}
+                                {getFormTags[data?.tag]({ ...data, onBlur: handleBlur, onChange: handleChange, errors: errorsData[template], formData: formsData[template], handleClear })}
                             </Fragment>
                         ))
                     )
@@ -39,48 +63,3 @@ const FormWrapper = () => {
 }
 
 export default FormWrapper;
-
-/** 
-   <FormInput
-        label='1. Email'
-        type="email"
-        id="email"
-        name="email"
-        placeholder='Example - userid@gmail.com'
-        required={true}
-    />
-    <FormInput
-        label='2. Location'
-        type="text"
-        id="location"
-        name="location"
-        placeholder='Search or enter your location'
-    />
-    <FormInput
-        label='3. Interview Date'
-        type="date"
-        id="date"
-        name="date"
-        placeholder='Search or enter your location'
-    />
-    <FormInput
-        label='4. Interview Time'
-        type="time"
-        id="time"
-        name="time"
-        placeholder='Search or enter your location'
-    />
-    <FormSelect
-        label='5. Time Zone'
-        id="timeZone"
-        name="timeZone"
-        options={timezones}
-        placeholder='Search or Select time zone from below'
-    />
-    <FormSelect
-        label='6. Interview Medium'
-        id="interviewMedium"
-        name="interviewMedium"
-        placeholder='Search or Select medium of Interview from below'
-    />
- */

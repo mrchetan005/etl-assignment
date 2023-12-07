@@ -10,7 +10,7 @@ const Form = () => {
                     <h3 className="text">Preview</h3>
                     <p className="text-xs">You will be able to customize the fields in the later stage</p>
                 </div>
-                <section className="overflow-hidden xl:rounded-xl shadow bg-white">
+                <section className="overflow-hidden sm:rounded-xl shadow bg-white">
                     <FormHeading />
                     <FormWrapper />
                 </section>

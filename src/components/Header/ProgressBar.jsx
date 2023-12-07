@@ -5,7 +5,6 @@ import { useSearchParams } from "react-router-dom";
 const ProgressBar = ({ progressBar }) => {
     const [query] = useSearchParams();
     const activeStep = query.get('step');
-    // console.log(activeStep);
 
     return (
         <>
@@ -20,7 +19,7 @@ const ProgressBar = ({ progressBar }) => {
                         </div>
                         {
                             i !== arr.length - 1 &&
-                            <div className={`w-full border-2 border-[#c3c3c3] mx-2 ${activeStep > step ? 'border-[#1A8FE6]' : ''}`}></div>
+                            <div className={`w-full border-2 mx-2 ${activeStep > step ? 'border-[#1A8FE6]' : 'border-[#c3c3c3]'}`}></div>
                         }
                     </Fragment>
                 ))

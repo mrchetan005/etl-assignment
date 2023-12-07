@@ -2,18 +2,34 @@ import moment from "moment-timezone";
 
 
 const FormSelect = (props) => {
-    const { label, id, className, options, required = false, placeholder } = props;
+    const { label, id, className, options, name, required = false, placeholder, errors, onBlur, onChange, formData, handleClear } = props;
     return (
-        <div className="flex flex-col py-4">
+        <div className="flex flex-col py-4 ">
             <label id={id} className="">{label}{required && '*'}</label>
-            <select id={id} className="border truncate border-[#888888] rounded p-2">
-                <option value="" className={`p-4 ${className}`}>{placeholder}</option>
+            <div className="relative">
+                <select value={formData[name]} onBlur={onBlur} onChange={onChange} id={id} name={name} className="border outline-none w-full truncate border-[#888888] rounded p-2 relative">
+                    <option value="" className={`p-4 ${className}`}>{placeholder}</option>
+                    {
+                        options?.map((value, i) => (
+                            <option
+                                key={i}
+                                value={value}
+                                className="capitalize truncate"
+                            >
+                                {name === 'timeZone' ? `${value} UTC${moment.tz(value).format('Z')}` : value}
+                            </option>
+                        ))
+                    }
+                </select>
                 {
-                    options?.map((value, i) => (
-                        <option key={i} value={value} className="capitalize truncate">{id === 'timeZone' ? `${value} UTC${moment.tz(value).format('Z')}` : value}</option>
-                    ))
+                    formData[name] && <div onClick={() => handleClear({ name, value: '', required })} className={`absolute right-1 top-1/2 cursor-pointer -translate-y-1/2 flex items-center justify-center w-6 h-6 p-1 sm:w-8 sm:h-8 bg-white`}>
+                        <img src="/icons/close.svg" alt="" />
+                    </div>
                 }
-            </select>
+            </div>
+            {
+                errors[name] && <p className="text-sm text-red-400 capitalize mt-1 pl-1">{errors[name]}</p>
+            }
         </div>
     )
 }

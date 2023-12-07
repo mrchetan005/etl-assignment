@@ -56,6 +56,8 @@ li {
 	background-color: #1a8ee648 !important;
 }
 
+/* ! Media Queries */
+
 @media screen and (max-width: 600px) {
 	html {
 		font-size: 62.5%;
@@ -65,5 +67,11 @@ li {
 @media screen and (max-width: 900px) {
 	html {
 		font-size: 70%;
+	}
+}
+
+@media screen and (max-width: 1500px) {
+	html {
+		font-size: 80%;
 	}
 }

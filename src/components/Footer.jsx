@@ -8,8 +8,6 @@ const Footer = () => {
     const currentStep = parseInt(searchParams.get('step'));
     const { disabled } = useSelector(state => state.form);
 
-    console.log(disabled);
-
     const handleNext = () => {
         if (currentStep === 4) return;
         setSearchParams({ step: currentStep + 1 });
