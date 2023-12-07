@@ -7,7 +7,7 @@ const FormsContainer = ({ title = defaultFormTemplate.title, description = defau
 
     return (
         <NavLink to={path}>
-            <div className={`sidebarWrapper flex gap-3 my-4 group p-4 border rounded-lg border-[#888888] hover:border-[#1A8FE6]`}>
+            <div className={`sidebarWrapper active:scale-[0.99] flex gap-3 my-4 group p-4 border rounded-lg border-[#888888] hover:border-[#1A8FE6]`}>
                 <div className={`sidebarBox h-16 w-16 lg:h-20 lg:w-20 flex-shrink-0 rounded-lg bg-[#d8d8d8] group-hover:bg-[#1a8ee648]`}>
                 </div>
                 <div className="inline-block">
