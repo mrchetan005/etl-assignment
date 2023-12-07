@@ -20,15 +20,15 @@ export const formTemplatesData = {
         { id: 'contactNo', name: 'contactNo', type: 'text', label: "4. Contact no", required: false, placeholder: 'Enter your 10 digit contact no', tag: 'input' }
     ],
     'document-collection': [
-        { id: 'marksheet10th', name: 'marksheet10th', type: 'file', 'data-size-limit': 5120, label: "1. 10th Marksheet", required: true, placeholder: 'Attach file upto 5kb', tag: 'input' },
-        { id: 'marksheet12th', name: 'marksheet12th', type: 'file', 'data-size-limit': 5120, label: "2. 12th Marksheet", required: true, placeholder: 'Attach file upto 5kb', tag: 'input' },
-        { id: 'marksheetGraduation', name: 'marksheetGraduation', type: 'file', 'data-size-limit': 5120, label: "3. Graduation Marksheet", required: true, placeholder: 'Attach file upto 5kb', tag: 'input' },
-        { id: 'marksheetPostGraduation', name: 'marksheetPostGraduation', type: 'file', 'data-size-limit': 5120, label: "4. Post Graduation Marksheet", required: true, placeholder: 'Attach file upto 5kb', tag: 'input' },
-        { id: 'offerLater', name: 'offerLater', type: 'file', 'data-size-limit': 5120, label: "5. Offer Later", required: true, placeholder: 'Attach file upto 5kb', tag: 'input' },
-        { id: 'salarySlips', name: 'salarySlips', type: 'file', 'data-size-limit': 5120, label: "6. Salary Slips", required: true, placeholder: 'Attach file upto 5kb', tag: 'input' },
-        { id: 'bankStatement', name: 'bankStatement', type: 'file', 'data-size-limit': 5120, label: "7. Bank Statement", required: true, placeholder: 'Attach file upto 5kb', tag: 'input' },
-        { id: 'incrementLetter', name: 'incrementLetter', type: 'file', 'data-size-limit': 5120, label: "8. Increment Letter (if any)", required: false, placeholder: 'Attach file upto 5kb', tag: 'input' },
-        { id: 'other', name: 'other', type: 'file', 'data-size-limit': 5120, label: "9. Other (if any)", required: false, placeholder: 'Attach file upto 5kb', tag: 'input' }
+        { id: 'marksheet10th', name: 'marksheet10th', type: 'file', 'data-size-limit': 1048576, label: "1. 10th Marksheet", required: true, placeholder: 'Attach file upto 1Mb', tag: 'input' },
+        { id: 'marksheet12th', name: 'marksheet12th', type: 'file', 'data-size-limit': 1048576, label: "2. 12th Marksheet", required: true, placeholder: 'Attach file upto 1Mb', tag: 'input' },
+        { id: 'marksheetGraduation', name: 'marksheetGraduation', type: 'file', 'data-size-limit': 1048576, label: "3. Graduation Marksheet", required: true, placeholder: 'Attach file upto 1Mb', tag: 'input' },
+        { id: 'marksheetPostGraduation', name: 'marksheetPostGraduation', type: 'file', 'data-size-limit': 1048576, label: "4. Post Graduation Marksheet", required: true, placeholder: 'Attach file upto 1Mb', tag: 'input' },
+        { id: 'offerLater', name: 'offerLater', type: 'file', 'data-size-limit': 1048576, label: "5. Offer Later", required: true, placeholder: 'Attach file upto 1Mb', tag: 'input' },
+        { id: 'salarySlips', name: 'salarySlips', type: 'file', 'data-size-limit': 1048576, label: "6. Salary Slips", required: true, placeholder: 'Attach file upto 1Mb', tag: 'input' },
+        { id: 'bankStatement', name: 'bankStatement', type: 'file', 'data-size-limit': 1048576, label: "7. Bank Statement", required: true, placeholder: 'Attach file upto 1Mb', tag: 'input' },
+        { id: 'incrementLetter', name: 'incrementLetter', type: 'file', 'data-size-limit': 1048576, label: "8. Increment Letter (if any)", required: false, placeholder: 'Attach file upto 1Mb', tag: 'input' },
+        { id: 'other', name: 'other', type: 'file', 'data-size-limit': 1048576, label: "9. Other (if any)", required: false, placeholder: 'Attach file upto 1Mb', tag: 'input' }
     ],
     'statement-of-purpose': [
         { id: 'que1', name: 'que1', type: 'text', label: "1. Tell me about a time you were asked to do something you had never done before. How did you react? What did you learn?", required: false, placeholder: 'Enter description from the long answer', max: 300, tag: 'textarea' },
