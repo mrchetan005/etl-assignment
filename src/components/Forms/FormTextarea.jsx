@@ -4,7 +4,7 @@ const FormTextarea = (props) => {
     return (
         <div className="flex flex-col py-4">
             <label htmlFor={id} className="">{label}{required && '*'}</label>
-            <div className={`border border-[#888888] rounded w-full h-full relative`}>
+            <div className={`border rounded w-full h-full relative ${errors[name] ? 'border-red-500 shadow shadow-red-100' : 'border-[#888888]'}`}>
                 {icon && icon}
                 <textarea
                     rows="4"
@@ -14,7 +14,7 @@ const FormTextarea = (props) => {
                     value={formData[name]}
                     required={required}
                     maxLength={max}
-                    className={`rounded resize-none w-full p-2 outline-none ${className}`} placeholder={placeholder}
+                    className={`rounded resize-none w-full p-2 pr-10 outline-none ${className}`} placeholder={placeholder}
                     {...inputProps}
                 ></textarea>
                 {
@@ -25,7 +25,7 @@ const FormTextarea = (props) => {
             </div>
             <p className="text-[10px] text-right text-[#bababa] mr-2">{max} word limit</p>
             {
-                errors[name] && <p className="text-sm text-red-400 capitalize mt-1 pl-1">{errors[name]}</p>
+                errors[name] && <p className="text-sm text-red-500 mt-1 pl-1">{errors[name]}</p>
             }
         </div>
     )

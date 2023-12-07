@@ -41,8 +41,8 @@ const FormWrapper = () => {
         }
     }
 
-    const handleClear = ({ name, type, value, files, required }) => {
-        dispatch(updateForm({ name, type, value, files, required, template }));
+    const handleClear = ({ name, type, value, required }) => {
+        dispatch(updateForm({ name, type, value, required, template }));
     }
 
     return (
@@ -50,9 +50,9 @@ const FormWrapper = () => {
             <form onSubmit={handleSubmit} className="w-11/12 sm:w-4/5 m-auto my-8">
                 {
                     template && (
-                        formTemplatesData?.[template]?.map(data => (
+                        formTemplatesData?.[template]?.map(({ tag, ...data }) => (
                             <Fragment key={data?.id}>
-                                {getFormTags[data?.tag]({ ...data, onBlur: handleBlur, onChange: handleChange, errors: errorsData[template], formData: formsData[template], handleClear })}
+                                {getFormTags[tag]({ ...data, onBlur: handleBlur, onChange: handleChange, errors: errorsData[template], formData: formsData[template], handleClear })}
                             </Fragment>
                         ))
                     )

@@ -7,7 +7,7 @@ const FormSelect = (props) => {
         <div className="flex flex-col py-4 ">
             <label id={id} className="">{label}{required && '*'}</label>
             <div className="relative">
-                <select value={formData[name]} onBlur={onBlur} onChange={onChange} id={id} name={name} className="border outline-none w-full truncate border-[#888888] rounded p-2 relative">
+                <select value={formData[name]} onBlur={onBlur} onChange={onChange} id={id} name={name} className={`border outline-none w-full truncate rounded p-2 relative ${errors[name] ? 'border-red-500 shadow shadow-red-100' : 'border-[#888888]'}`}>
                     <option value="" className={`p-4 ${className}`}>{placeholder}</option>
                     {
                         options?.map((value, i) => (
@@ -28,7 +28,7 @@ const FormSelect = (props) => {
                 }
             </div>
             {
-                errors[name] && <p className="text-sm text-red-400 capitalize mt-1 pl-1">{errors[name]}</p>
+                errors[name] && <p className="text-sm text-red-500 mt-1 pl-1">{errors[name]}</p>
             }
         </div>
     )

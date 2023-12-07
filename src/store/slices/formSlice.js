@@ -13,10 +13,10 @@ const formSlice = createSlice({
     initialState,
     reducers: {
         updateForm(state, action) {
-            const { name, value, files, required, template, type } = action.payload;
-            if (files || type === 'file') return;
+            const { name, value, files, required, template } = action.payload;
+            if (files) return;
             if (!value && required) {
-                state.errorsData[template][name] = `${name} is required`;
+                state.errorsData[template][name] = `This field is required`;
             } else if (name === 'email' && !validateEmail(value)) {
                 state.errorsData[template][name] = `Please enter valid email`;
             } else {
@@ -27,11 +27,11 @@ const formSlice = createSlice({
         updateFiles(state, action) {
             const { name, files, required, sizeLimit, template } = action.payload;
             if (files && required) {
-                if (files[0].size <= sizeLimit) {
-                    state.formsData[template][name] = files;
+                if (files[0] && (files[0].size <= sizeLimit)) {
+                    state.formsData[template][name] = files[0];
                     state.errorsData[template][name] = '';
                 } else {
-                    state.errorsData[template][name] = 'File must be at most 5kb';
+                    state.errorsData[template][name] = 'File must be at most 1Mb';
                 }
                 return;
             }

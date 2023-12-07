@@ -16,3 +16,9 @@ export const validateEmail = (email) => {
     var re = /\S+@\S+\.\S+/;
     return re.test(email);
 }
+
+export const formatDate = (date) => {
+    const dateString = date.toLocaleDateString().split('/');
+    // Format yyyy-mm-dd
+    return dateString[2] + '-' + (dateString[0].length < 2 ? '0' : '') + dateString[0] + '-' + (dateString[1].length < 2 ? '0' : '') + dateString[1];
+}
