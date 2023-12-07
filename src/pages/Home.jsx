@@ -7,10 +7,6 @@ import { useEffect } from "react";
 const Home = () => {
     const navigate = useNavigate();
 
-    useEffect(() => {
-        navigate('/form/new-form?step=1');
-    }, []);
-
     return (
         <div className="bg-[#F5F5F5] flex flex-col sm:flex-row">
             <Sidebar />
