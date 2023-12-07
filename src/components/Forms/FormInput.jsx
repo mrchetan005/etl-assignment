@@ -4,6 +4,8 @@ const types = ['date', 'time', 'file'];
 const FormInput = (props) => {
     const { label, id, className, icon, required = false, type = "text", errors, name, handleClear, formData, ...inputProps } = props;
 
+    const moreInputProps = type !== 'file' ? { value: formData[name] } : {};
+
     return (
         <div className="flex flex-col py-4">
             <label htmlFor={id} className="">{label}{required && '*'}</label>
@@ -11,16 +13,17 @@ const FormInput = (props) => {
                 {icon}
                 <input
                     id={id}
-                    value={formData[name]}
                     required={required}
                     className={`rounded w-full outline-none p-2 ${className}`} name={name} type={type}
                     {...inputProps}
-
+                    {...moreInputProps}
                 />
                 {
-                    formData[name] && <div onClick={() => handleClear({ name, type, value: '', required })} className={`absolute right-1 cursor-pointer bg-white top-1/2 -translate-y-1/2 flex items-center justify-center w-6 h-6 p-1 sm:w-8 sm:h-8 ${types.includes(type) ? '-right-10' : ''}`}>
-                        <img src="/icons/close.svg" alt="" />
-                    </div>
+                    (type !== 'file' && formData[name]) && (
+                        <div onClick={() => handleClear({ name, type, value: '', required })} className={`absolute right-1 cursor-pointer bg-white top-1/2 -translate-y-1/2 flex items-center justify-center w-6 h-6 p-1 sm:w-8 sm:h-8 ${types.includes(type) ? '-right-10' : ''}`}>
+                            <img src="/icons/close.svg" alt="" />
+                        </div>
+                    )
                 }
             </div>
             {

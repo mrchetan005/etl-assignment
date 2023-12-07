@@ -13,8 +13,8 @@ const formSlice = createSlice({
     initialState,
     reducers: {
         updateForm(state, action) {
-            const { name, value, files, required, template } = action.payload;
-            if (files) return;
+            const { name, value, files, required, template, type } = action.payload;
+            if (files || type === 'file') return;
             if (!value && required) {
                 state.errorsData[template][name] = `${name} is required`;
             } else if (name === 'email' && !validateEmail(value)) {
